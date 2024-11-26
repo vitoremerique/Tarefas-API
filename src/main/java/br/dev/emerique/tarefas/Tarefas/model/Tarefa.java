@@ -1,9 +1,6 @@
 package br.dev.emerique.tarefas.Tarefas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity(name = "tarefas")
 public class Tarefa {
@@ -13,13 +10,18 @@ public class Tarefa {
 
     private String titulo;
     private String descricao;
-    private boolean status;
+
+    @Enumerated(EnumType.STRING)
+    private Prioridade prioridade;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 
-    public Tarefa(Long id, String titulo, String descricao, boolean status) {
+    public Tarefa(Long id, String titulo, String descricao,Prioridade prioridade ,Status status) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
+        this.prioridade = prioridade;
         this.status = status;
     }
 
@@ -27,6 +29,13 @@ public class Tarefa {
 
     }
 
+    public Prioridade getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(Prioridade prioridade) {
+        this.prioridade = prioridade;
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +57,11 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public boolean isStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

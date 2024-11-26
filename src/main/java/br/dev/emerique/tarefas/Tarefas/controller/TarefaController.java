@@ -16,7 +16,6 @@ public class TarefaController {
 
     @PostMapping
     public Tarefa criaTarefa(@RequestBody Tarefa tarefa) {
-
         return repositorio.salvar(tarefa);
     }
 
@@ -38,6 +37,11 @@ public class TarefaController {
     @DeleteMapping
     public void deletaTarefa(@RequestBody Tarefa tarefa) {
         repositorio.deletar(tarefa);
+    }
+
+    @DeleteMapping("/all")
+    public void deletarTudo(){
+        repositorio.deletarTudo();
     }
 
 

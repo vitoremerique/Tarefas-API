@@ -34,7 +34,8 @@ public class TarefaServico implements TarefaServicoInterface {
         Optional<Tarefa> tarefaAtt = repository.findById(tarefa.getId());
         tarefaAtt.get().setTitulo(tarefa.getTitulo());
         tarefaAtt.get().setDescricao(tarefa.getDescricao());
-        tarefaAtt.get().setStatus(tarefa.isStatus());
+        tarefaAtt.get().setStatus(tarefa.getStatus());
+        tarefaAtt.get().setPrioridade(tarefa.getPrioridade());
         return repository.save(tarefa);
 
     }
