@@ -11,6 +11,8 @@ public interface TarefaServicoInterface {
     Tarefa salvar(Tarefa tarefa);
     Tarefa atualizar(Tarefa tarefa);
     Tarefa deletar(Tarefa tarefa);
+    List<Tarefa> buscarPorTitulo(String nome);
     void deletarTudo();
     List<Tarefa> listaTudo();
+
 }

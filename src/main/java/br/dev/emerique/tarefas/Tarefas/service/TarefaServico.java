@@ -5,6 +5,7 @@ import br.dev.emerique.tarefas.Tarefas.model.Tarefa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,18 @@ public class TarefaServico implements TarefaServicoInterface {
         repository.delete(tarefaDeletar.get());
         return tarefaDeletar.get();
     }
+
+
+
+    @Override
+    public List<Tarefa> buscarPorTitulo(String titulo) {
+        List<Tarefa> tarefas = repository.findByTitulo(titulo);
+        return tarefas;
+
+
+    }
+
+
 
     @Override
     public void deletarTudo() {

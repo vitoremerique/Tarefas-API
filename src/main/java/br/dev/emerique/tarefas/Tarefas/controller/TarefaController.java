@@ -29,6 +29,13 @@ public class TarefaController {
         }
     }
 
+
+    @GetMapping("/name")
+    public List<Tarefa> listaTarefasPorTitulo(@RequestBody String nome) {
+
+        return repositorio.buscarPorTitulo(nome);
+    }
+
     @PutMapping
     public Tarefa atualizaTarefa(@RequestBody Tarefa tarefa) {
         return repositorio.atualizar(tarefa);

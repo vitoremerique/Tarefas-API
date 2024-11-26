@@ -2,12 +2,13 @@ package br.dev.emerique.tarefas.Tarefas.model;
 
 import jakarta.persistence.*;
 
-@Entity(name = "tarefas")
+@Entity
+@Table(name = "tarefa")
 public class Tarefa {
     @Id
     private Long id;
 
-
+    @Column(name = "titulo",unique = true, nullable = false)
     private String titulo;
     private String descricao;
 
