@@ -8,7 +8,7 @@ public class Tarefa {
     @Id
     private Long id;
 
-    @Column(name = "titulo",unique = true, nullable = false)
+    @Column(nullable = false)
     private String titulo;
     private String descricao;
 

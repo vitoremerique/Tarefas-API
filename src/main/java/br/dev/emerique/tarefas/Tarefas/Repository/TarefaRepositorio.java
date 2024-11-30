@@ -11,9 +11,11 @@ import java.util.List;
 @Repository
 public interface TarefaRepositorio extends JpaRepository<Tarefa, Long> {
 
-    @Query("FROM Tarefa t where t.titulo = ?1")
-    List<Tarefa> findByTitulo(String titulo);
+
+    List<Tarefa> findByTituloIgnoreCase(String titulo);
+
 
 }
+
 
 

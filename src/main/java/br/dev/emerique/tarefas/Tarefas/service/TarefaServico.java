@@ -52,7 +52,7 @@ public class TarefaServico implements TarefaServicoInterface {
 
     @Override
     public List<Tarefa> buscarPorTitulo(String titulo) {
-        List<Tarefa> tarefas = repository.findByTitulo(titulo);
+        List<Tarefa> tarefas = repository.findByTituloIgnoreCase(titulo);
         return tarefas;
 
 
