@@ -1,11 +1,11 @@
 package br.dev.emerique.tarefas.Tarefas.service;
 
 import br.dev.emerique.tarefas.Tarefas.Repository.TarefaRepositorio;
+import br.dev.emerique.tarefas.Tarefas.model.Prioridade;
 import br.dev.emerique.tarefas.Tarefas.model.Tarefa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,4 +72,11 @@ public class TarefaServico implements TarefaServicoInterface {
         List<Tarefa> listaTarefa = repository.findAll();
         return listaTarefa;
     }
+
+    @Override
+    public List<Tarefa> buscarPorPrioridade(Prioridade prioridade) {
+         List<Tarefa> tarefasPrioridade = repository.findByPrioridade(prioridade);
+         return tarefasPrioridade;
+    }
 }
+

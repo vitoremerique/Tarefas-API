@@ -1,5 +1,6 @@
 package br.dev.emerique.tarefas.Tarefas.controller;
 
+import br.dev.emerique.tarefas.Tarefas.model.Prioridade;
 import br.dev.emerique.tarefas.Tarefas.model.Tarefa;
 import br.dev.emerique.tarefas.Tarefas.service.TarefaServico;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,14 +37,23 @@ public class TarefaController {
 
     @Operation(summary = "Busca tarefas por título", description = "Retorna uma lista de tarefas com o título especificado.")
     @GetMapping("/name")
-    public List<Tarefa> listaTarefasPorTitulo(
-            @RequestParam(name = "titulo", required = false)
+    public List<Tarefa> listaTarefasPorTitulo( @RequestParam(name = "titulo", required = false)
             @Parameter(description = "Título da tarefa para filtro", example = "Minha Tarefa") String titulo) {
         if (titulo == null || titulo.isEmpty()) {
             return repositorio.listaTudo(); // Retorna todas as tarefas se o parâmetro não for fornecido
         }
         return repositorio.buscarPorTitulo(titulo);
     }
+
+
+    @GetMapping("/prioridade")
+    public List<Tarefa> listaTarefaPrioridade(@RequestParam(name = "nivel", required = false) Prioridade prioridade){
+
+        return repositorio.buscarPorPrioridade(prioridade);
+    }
+
+
+
 
     @Operation(summary = "Atualiza uma tarefa existente", description = "Atualiza os dados de uma tarefa com base no ID fornecido.")
     @PutMapping
